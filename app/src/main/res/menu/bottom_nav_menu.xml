@@ -3,19 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/matches"
-        android:title="Matches"
+        android:title="@string/matches"
+        android:icon="@drawable/ball_icon"
         />
     <item android:id="@+id/top_players"
-        android:title="Top Players"
-        android:icon="@drawable/test"
+        android:title="@string/top_players"
+        android:icon="@drawable/top_players_icon"
         />
     <item android:id="@+id/videos"
-        android:title="Videos"
+        android:title="@string/videos"
+        android:icon="@drawable/videos_icon"
         />
     <item android:id="@+id/favorites"
-        android:title="Favorites"
+        android:title="@string/favorites"
+        android:icon="@drawable/favorites_icon"
         />
     <item android:id="@+id/settings"
-        android:title="Settings"
+        android:title="@string/settings"
+        android:icon="@drawable/settings_icon"
         />
 </menu>

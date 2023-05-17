@@ -12,10 +12,12 @@
      android:layout_height="match_parent"/>
 
  <com.google.android.material.bottomnavigation.BottomNavigationView
+     android:id="@+id/bottom_nav"
      app:itemBackground="@color/green"
      app:layout_constraintBottom_toBottomOf="parent"
      app:menu="@menu/bottom_nav_menu"
      app:labelVisibilityMode="labeled"
+     app:itemIconTint="@color/white"
      app:itemTextColor="@drawable/bottom_nav_text_bg"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"/>

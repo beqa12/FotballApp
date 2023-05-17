@@ -1,20 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:background="#CCFFFFFF">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:text="Match DEtails"
-        android:textColor="#000"
-        android:textSize="18sp"
 
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:layout_width="match_parent"
+            android:background="@color/green"
+            android:layout_height="220dp"/>
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:theme="@style/ThemeOverlay.AppCompat.Light"
+                android:background="@color/green"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:layout_width="match_parent"
+                    android:background="@color/green"
+                    android:layout_height="wrap_content"
+                    >
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/back_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/back_arrow"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/not_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/not_icon"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/match_preview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/match_preview"
+                            android:textColor="@color/white"
+                            android:textSize="17sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/back_arrow" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/game_week"
+                            android:textColor="@color/_80FFFFFF"
+                            android:textSize="14sp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/match_preview" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.appcompat.widget.Toolbar>
+
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cardCornerRadius="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginEnd="13dp"
+            app:cardBackgroundColor="@color/white"
+            android:elevation="10dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.example.footballapp.ui.details.customview.TeamsDetailsCustomView
+                    android:id="@+id/teams_detail_custom_view"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.core.widget.NestedScrollView
+                    app:layout_constraintTop_toBottomOf="@+id/teams_detail_custom_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginBottom="30dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="30dp"
+                    >
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:text="DEtailsdscvsdvsdvsdvsdvsdvsdvdsnvisdauabvifhsbvhabvasvudhsbvuysbdvcyudsbvyusdbvhysdbvhsdbvuhsdbvhudsbvhudsbvhudsbvyubduybdsuyfbuydbcuydbcdubcsdubcdyubcshdbchdsbcuhdsbcuhsdcbhdsbchdbchudbchudbcuydsbuydbciuydbciuyedbciuydbcuydsbcusdbcuhdsbcuydsbcudsbcydsbcudbcdcbdsuhcbudysbcuydbcdiucbdiucbdabcnidubciudbciudsbcidscbdbcidsubcidsbcidsbcidsbcdisbcidsbcidybcibdDEtailsdscvsdvsdvsdvsdvsdvsdvdsnvisdauabvifhsbvhabvasvudhsbvuysbdvcyudsbvyusdbvhysdbvhsdbvuhsdbvhudsbvhudsbvhudsbvyubduybdsuyfbuydbcuydbcdubcsdubcdyubcshdbchdsbcuhdsbcuhsdcbhdsbchdbchudbchudbcuydsbuydbciuydbciuyedbciuydbcuydsbcusdbcuhdsbcuydsbcudsbcydsbcudbcdcbdsuhcbudysbcuydbcdiucbdiucbdabcnidubciudbciudsbcidscbdbcidsubcidsbcidsbcidsbcdisbcidsbcidybcibdDEtailsdscvsdvsdvsdvsdvsdvsdvdsnvisdauabvifhsbvhabvasvudhsbvuysbdvcyudsbvyusdbvhysdbvhsdbvuhsdbvhudsbvhudsbvhudsbvyubduybdsuyfbuydbcuydbcdubcsdubcdyubcshdbchdsbcuhdsbcuhsdcbhdsbchdbchudbchudbcuydsbuydbciuydbciuyedbciuydbcuydsbcusdbcuhdsbcuydsbcudsbcydsbcudbcdcbdsuhcbudysbcuydbcdiucbdiucbdabcnidubciudbciudsbcidscbdbcidsubcidsbcidsbcidsbcdisbcidsbcidybcibdDEtailsdscvsdvsdvsdvsdvsdvsdvdsnvisdauabvifhsbvhabvasvudhsbvuysbdvcyudsbvyusdbvhysdbvhsdbvuhsdbvhudsbvhudsbvhudsbvyubduybdsuyfbuydbcuydbcdubcsdubcdyubcshdbchdsbcuhdsbcuhsdcbhdsbchdbchudbchudbcuydsbuydbciuydbciuyedbciuydbcuydsbcusdbcuhdsbcuydsbcudsbcydsbcudbcdcbdsuhcbudysbcuydbcdiucbdiucbdabcnidubciudbciudsbcidscbdbcidsubcidsbcidsbcidsbcdisbcidsbcidybcibdMatch DEtailsdscvsdvsdvsdvsdvsdvsdvdsnvisdauabvifhsbvhabvasvudhsbvuysbdvcyudsbvyusdbvhysdbvhsdbvuhsdbvhudsbvhudsbvhudsbvyubduybdsuyfbuydbcuydbcdubcsdubcdyubcshdbchdsbcuhdsbcuhsdcbhdsbchdbchudbchudbcuydsbuydbciuydbciuyedbciuydbcuydsbcusdbcuhdsbcuydsbcudsbcydsbcudbcdcbdsuhcbudysbcuydbcdiucbdiucbdabcnidubciudbciudsbcidscbdbcidsubcidsbcidsbcidsbcdisbcidsbcidybcibd"
+                        android:textColor="#000"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.core.widget.NestedScrollView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

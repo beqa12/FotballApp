@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:id="@+id/match_date_container"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"
+        android:layout_marginTop="12dp"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/match_date"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="2 September 2018 "
+            android:textSize="12sp"
+            android:textColor="@color/green"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/match_stadium"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="Camp Now Stadium"
+            android:textSize="12sp"
+            android:layout_marginStart="8dp"
+            android:textColor="@color/_B1B1B1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/teams_info"
+        app:layout_constraintTop_toBottomOf="@+id/match_date_container"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/first_team_rating"
+            android:src="@drawable/rating"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/first_team_rating"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:id="@+id/first_team_logo"
+            android:src="@drawable/barsa_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.example.footballapp.ui.details.customview.CTextView
+            android:id="@+id/first_team_name"
+            app:layout_constraintTop_toBottomOf="@+id/first_team_logo"
+            app:layout_constraintStart_toStartOf="@+id/first_team_logo"
+            app:layout_constraintEnd_toEndOf="@+id/first_team_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/second_team_rating"
+            android:src="@drawable/rating"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/second_team_rating"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:id="@+id/second_team_logo"
+            android:src="@drawable/huesca_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <com.example.footballapp.ui.details.customview.CTextView
+            android:id="@+id/second_team_name"
+            app:layout_constraintTop_toBottomOf="@+id/second_team_logo"
+            app:layout_constraintStart_toStartOf="@+id/second_team_logo"
+            app:layout_constraintEnd_toEndOf="@+id/second_team_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <com.example.footballapp.ui.details.customview.CTextView
+                android:id="@+id/first_team_score_result"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.example.footballapp.ui.details.customview.CTextView
+                android:id="@+id/dot"
+                android:layout_marginStart="8dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <com.example.footballapp.ui.details.customview.CTextView
+                android:id="@+id/second_team_score_result"
+                android:layout_width="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.example.footballapp.ui.details.customview.MatchCategoriesCustomView
+        app:layout_constraintTop_toBottomOf="@+id/teams_info"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

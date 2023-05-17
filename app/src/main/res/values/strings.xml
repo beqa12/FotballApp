@@ -1,4 +1,17 @@
 <resources>
     <string name="app_name">FootballApp</string>
     <string name="internet_problem">Make sure you have internet</string>
+
+
+    // BottomNav texts
+    <string name="badge_text">3</string>
+    <string name="matches">Matches</string>
+    <string name="top_players">Top Players</string>
+    <string name="videos">Videos</string>
+    <string name="favorites">Favourites</string>
+    <string name="settings">Settings</string>
+    
+    
+    <string name="match_preview">Match Preview</string>
+    <string name="game_week">Gameweek 3</string>
 </resources>
