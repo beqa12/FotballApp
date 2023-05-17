@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FootballApp</string>
+    <string name="internet_problem">Make sure you have internet</string>
+</resources>
