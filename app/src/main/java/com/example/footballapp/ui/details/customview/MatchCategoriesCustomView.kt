@@ -13,8 +13,8 @@ import com.example.footballapp.databinding.MatchCategoriesCustomLayoutBinding
 
 class MatchCategoriesCustomView(context: Context, attributeSet: AttributeSet?): LinearLayout(context, attributeSet) {
 
-    private lateinit var mContext: Context
-    private lateinit var binding: MatchCategoriesCustomLayoutBinding
+    private var mContext: Context
+    private var binding: MatchCategoriesCustomLayoutBinding
     private var categoryRadionBtn: RadioButton? = null
     private var radioBtbsList = ArrayList<RadioButton>()
 
@@ -31,16 +31,11 @@ class MatchCategoriesCustomView(context: Context, attributeSet: AttributeSet?): 
     }
 
     private fun addCategories(){
-        val listNames = getListOfNames()
         getListOfNames().forEachIndexed { index, name ->
-
             categoryRadionBtn = RadioButton(mContext)
             categoryRadionBtn?.buttonDrawable = StateListDrawable()
             categoryRadionBtn?.id = index
-            val params = LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
-            )
+            val params = LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT)
             params.setMargins(20, 0, 20, 0)
             categoryRadionBtn?.layoutParams = params
             categoryRadionBtn?.setTextColor(

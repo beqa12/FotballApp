@@ -18,10 +18,15 @@ class CTextView(context: Context, attributeSet: AttributeSet): AppCompatTextView
         this.typeface = Typeface.DEFAULT_BOLD
     }
 
-    fun setTextTest(text: String, size: Float? = null){
-        this.setText(text)
+    fun setTextTest(text: String? = null, size: Float? = null, color: Int? = null){
+        text?.let {
+            this.text = it
+        }
         size?.let {
             this.textSize = it
+        }
+        color?.let {
+            this.setTextColor(it)
         }
     }
 }
