@@ -15,12 +15,12 @@ class FootballRetrofit(private val noConnectionInterceptor: NoConnectionIntercep
     }
 
     private val client = OkHttpClient.Builder().apply {
-        addInterceptor(noConnectionInterceptor)
+//        addInterceptor(noConnectionInterceptor)
 //        addInterceptor(environmentInterceptor)
 //        addInterceptor(defaultParameterInterceptor)
-        connectTimeout(1, TimeUnit.MINUTES) // connect timeout
-        writeTimeout(1, TimeUnit.MINUTES) // write timeout
-        readTimeout(1, TimeUnit.MINUTES)
+//        connectTimeout(1, TimeUnit.MINUTES) // connect timeout
+//        writeTimeout(1, TimeUnit.MINUTES) // write timeout
+//        readTimeout(1, TimeUnit.MINUTES)
         addInterceptor(httpLoggingInterceptor)
     }.build()
 

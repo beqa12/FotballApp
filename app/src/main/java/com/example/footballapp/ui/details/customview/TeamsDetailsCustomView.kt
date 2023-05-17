@@ -15,22 +15,22 @@ class TeamsDetailsCustomView(context: Context, attributeSet: AttributeSet): Cons
        binding = TeamsLayouBinding.inflate(
             LayoutInflater.from(context), this, true)
 
-        binding.firstTeamName.setTextTest("Barcelona")
-        binding.secondTeamName.setTextTest("Huesca")
-        binding.firstTeamScoreResult.setTextTest("5", 25f)
-        binding.dot.setTextTest(":", 25f)
-        binding.secondTeamScoreResult.setTextTest("1", 25f)
+        binding.firstTeamName.setData("Barcelona")
+        binding.secondTeamName.setData("Huesca")
+        binding.firstTeamScoreResult.setData("5", 25f)
+        binding.dot.setData(":", 25f)
+        binding.secondTeamScoreResult.setData("1", 25f)
         setBallPossession(80)
     }
 
     fun setBallPossession(firstTeamPossession: Int){
         binding.prgress.setProgress(firstTeamPossession)
-        binding.ballPossessionTitle.setTextTest(context.getString(R.string.ball_possession_title), color = context.getColor(R.color._B1B1B1))
-        binding.firstTeamPossession.setTextTest("$firstTeamPossession%", 12f, context.getColor(R.color._B1B1B1))
+        binding.ballPossessionTitle.setData(context.getString(R.string.ball_possession_title), color = context.getColor(R.color._B1B1B1))
+        binding.firstTeamPossession.setData("$firstTeamPossession%", 12f, context.getColor(R.color._B1B1B1))
         val secondTeamsPosession = 100 - firstTeamPossession
-        binding.secondTeamPossession.setTextTest("$secondTeamsPosession%", 12f, context.getColor(R.color._B1B1B1))
-        binding.firstHalfTv.setTextTest(context.getString(R.string.first_half), size = 9f, color = context.getColor(R.color._B0B0B0))
-        binding.firstHalfResultTv.setTextTest(("1:1"),size = 9f, color = context.getColor(R.color._B0B0B0))
+        binding.secondTeamPossession.setData("$secondTeamsPosession%", 12f, context.getColor(R.color._B1B1B1))
+        binding.firstHalfTv.setData(context.getString(R.string.first_half), size = 9f, color = context.getColor(R.color._B0B0B0))
+        binding.firstHalfResultTv.setData(("1:1"),size = 9f, color = context.getColor(R.color._B0B0B0))
 
     }
 

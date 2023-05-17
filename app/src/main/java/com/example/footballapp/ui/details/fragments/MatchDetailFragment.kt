@@ -18,6 +18,6 @@ class MatchDetailFragment : BaseFragment<MatchDetailFragmentLayoutBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        matchDetailViewmodel.fetchData()
+        matchDetailViewmodel.fetchData()
     }
 }

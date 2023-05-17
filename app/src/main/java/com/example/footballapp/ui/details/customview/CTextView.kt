@@ -5,7 +5,6 @@ import android.graphics.Typeface
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.footballapp.R
-import com.example.footballapp.utils.dpToPxf
 
 class CTextView(context: Context, attributeSet: AttributeSet): AppCompatTextView(context, attributeSet) {
 
@@ -18,7 +17,7 @@ class CTextView(context: Context, attributeSet: AttributeSet): AppCompatTextView
         this.typeface = Typeface.DEFAULT_BOLD
     }
 
-    fun setTextTest(text: String? = null, size: Float? = null, color: Int? = null){
+    fun setData(text: String? = null, size: Float? = null, color: Int? = null){
         text?.let {
             this.text = it
         }
