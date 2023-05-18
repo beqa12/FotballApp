@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.footballapp.R
 import com.example.footballapp.databinding.MatchDetailFragmentLayoutBinding
 import com.example.footballapp.domain.resource.Status
 import com.example.footballapp.ui.base.BaseFragment
+import com.example.footballapp.ui.details.adapter.MatchDetailRecyclerAdapter
 import com.example.footballapp.ui.details.viewmodel.MatchDetailViewModel
 import com.example.footballapp.utils.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -20,9 +22,16 @@ class MatchDetailFragment : BaseFragment<MatchDetailFragmentLayoutBinding>() {
         get() = MatchDetailFragmentLayoutBinding::inflate
 
     private val matchDetailViewmodel: MatchDetailViewModel by viewModel()
+    private lateinit var matchDetailsAdapter: MatchDetailRecyclerAdapter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initUI()
+    }
+    private fun initUI(){
+        matchDetailsAdapter = MatchDetailRecyclerAdapter()
+        binding.recycler.layoutManager = LinearLayoutManager(requireContext())
+        binding.recycler.adapter = matchDetailsAdapter
         initActions()
         fetchData()
     }
@@ -43,6 +52,7 @@ class MatchDetailFragment : BaseFragment<MatchDetailFragmentLayoutBinding>() {
             when(it){
                 is Status.SUCCESS -> {
                     binding.teamsDetailCustomView.setData(it.data)
+                    matchDetailsAdapter.addPlayerActions(it.data.actions)
 //                    Log.e("TAG", "MatchInfo -> ${it.data.match}")
                 }
                 is Status.ERROR -> {
@@ -51,7 +61,7 @@ class MatchDetailFragment : BaseFragment<MatchDetailFragmentLayoutBinding>() {
                 is Status.NO_INTERNET -> {
                     requireContext().showToast(requireContext().getString(R.string.internet_problem))
                 }
-                else -> println("Error occurred")
+                else -> println(requireContext().getString(R.string.error_occurred))
             }
         }
         matchDetailViewmodel.progressBar.observe(viewLifecycleOwner){

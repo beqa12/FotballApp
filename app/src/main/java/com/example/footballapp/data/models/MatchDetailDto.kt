@@ -47,9 +47,9 @@ data class MatchSummariesDto(
     @SerializedName("actionTime")
     var actionTime: String?,
     @SerializedName("team1Action")
-    var team1Action: List<TeamActionDto>?,
+    var team1Action: List<TeamActionDto?>,
     @SerializedName("team2Action")
-    var team2Action: List<TeamActionDto>?
+    var team2Action: List<TeamActionDto?>
 ): Serializable
 
 data class TeamActionDto(

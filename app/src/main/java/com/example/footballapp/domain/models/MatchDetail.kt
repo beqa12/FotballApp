@@ -4,7 +4,8 @@ import java.io.Serializable
 
 data class MatchDetail(
     var resultCode: Int?,
-    var match: Match
+    var match: Match,
+    var actions: List<ActionTest>
 )
 
 data class Match(
@@ -77,7 +78,7 @@ enum class GoalType(goalType: Int){
     OWN_GOAL(2)
 }
 
-enum class MatchTeamType(teamType: Int){
-    TEAM1  (1),
-    TEAM2  (2)
+sealed class MatchTeamType(){
+    data class TEAM1(val teamType: Int = 1): MatchTeamType()
+    data class TEAM2(val teamType: Int = 2): MatchTeamType()
 }

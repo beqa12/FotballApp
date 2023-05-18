@@ -43,26 +43,26 @@ class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
         dto.match.matchSummary?.matchSummaries?.forEach { matchSummaryDto ->
             val players = ArrayList<PlayerTest>()
             matchSummaryDto.team1Action?.forEach { actionDto ->
-                actionDto.action?.players?.forEach { playerDto ->
+                actionDto?.action?.players?.forEach { playerDto ->
                     val player = PlayerTest(
                         playerName = playerDto?.playerName,
                         playerImage = playerDto?.playerImage,
-                        goalType = actionDto.action?.goalType,
-                        teamType = actionDto.teamType,
-                        actionType = actionDto.actionType
+                        goalType = actionDto?.action?.goalType,
+                        teamType = actionDto?.teamType,
+                        actionType = actionDto?.actionType
                     )
                     players.add(player)
                 }
             }
 
             matchSummaryDto.team2Action?.forEach { actionDto ->
-                actionDto.action?.players?.forEach { playerDto ->
+                actionDto?.action?.players?.forEach { playerDto ->
                     val player = PlayerTest(
                         playerName = playerDto?.playerName,
                         playerImage = playerDto?.playerImage,
-                        goalType = actionDto.action?.goalType,
-                        teamType = actionDto.teamType,
-                        actionType = actionDto.actionType
+                        goalType = actionDto?.action?.goalType,
+                        teamType = actionDto?.teamType,
+                        actionType = actionDto?.actionType
                     )
                     players.add(player)
                 }
@@ -74,13 +74,14 @@ class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
             )
             playerActions.add(actionTest)
         }
-        playerActions.forEach {
-            Log.e("TAG", "Domain -> $it")
-        }
+//        playerActions.forEach {
+//            Log.e("TAG", "Domain -> $it")
+//        }
 
         return MatchDetail(
             resultCode = dto.resultCode,
-            match = match
+            match = match,
+            actions = playerActions
         )
     }
 }
