@@ -1,12 +1,14 @@
 package com.example.footballapp.data.network.retrofit
 
+import com.example.footballapp.data.models.ActionDto
 import com.example.footballapp.data.network.endpoints.Endpoints
 import com.example.footballapp.data.network.interceptors.NoConnectionInterceptor
+import com.example.footballapp.ui.details.custom.CustomActionDeserializer
+import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 class FootballRetrofit(private val noConnectionInterceptor: NoConnectionInterceptor) {
 
@@ -14,13 +16,12 @@ class FootballRetrofit(private val noConnectionInterceptor: NoConnectionIntercep
         this.level = HttpLoggingInterceptor.Level.BODY
     }
 
+    val gson = GsonBuilder()
+        .registerTypeAdapter(ActionDto::class.java, CustomActionDeserializer())
+        .create()
+
     private val client = OkHttpClient.Builder().apply {
-//        addInterceptor(noConnectionInterceptor)
-//        addInterceptor(environmentInterceptor)
-//        addInterceptor(defaultParameterInterceptor)
-//        connectTimeout(1, TimeUnit.MINUTES) // connect timeout
-//        writeTimeout(1, TimeUnit.MINUTES) // write timeout
-//        readTimeout(1, TimeUnit.MINUTES)
+        addInterceptor(noConnectionInterceptor)
         addInterceptor(httpLoggingInterceptor)
     }.build()
 
@@ -31,7 +32,7 @@ class FootballRetrofit(private val noConnectionInterceptor: NoConnectionIntercep
             if (retrofitInstance == null) {
                 retrofitInstance = Retrofit.Builder()
                     .baseUrl(Endpoints.BASE_URL)
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .client(client)
                     .build()
             }

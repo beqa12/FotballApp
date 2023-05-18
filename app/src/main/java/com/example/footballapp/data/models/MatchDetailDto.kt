@@ -1,5 +1,7 @@
 package com.example.footballapp.data.models
 
+import com.example.footballapp.ui.details.custom.CustomActionDeserializer
+import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
@@ -52,22 +54,18 @@ data class MatchSummariesDto(
 
 data class TeamActionDto(
     @SerializedName("actionType")
-    var actionType: MatchActionType?,
+    var actionType: Int?,
     @SerializedName("teamType")
-    var teamType: MatchTeamType?,
+    var teamType: Int?,
     @SerializedName("action")
-    var action: ActionDto
+    @JsonAdapter(CustomActionDeserializer::class)
+    var action: ActionDto?
 ): Serializable
 
 data class ActionDto(
-    @SerializedName("player")
-    var player: PlayerDto?,
-    @SerializedName("player1")
-    var player1: PlayerDto?,
-    @SerializedName("player2")
-    var player2: PlayerDto?,
+    var players: List<PlayerDto?>,
     @SerializedName("goalType")
-    var goalType: GoalType?
+    var goalType: Int?
 ): Serializable
 
 data class PlayerDto(

@@ -1,4 +1,4 @@
-package com.example.footballapp.ui.details.customview
+package com.example.footballapp.ui.details.custom
 
 import android.content.Context
 import android.graphics.Typeface

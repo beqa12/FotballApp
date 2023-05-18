@@ -52,7 +52,7 @@
 
 
 
-    <com.example.footballapp.ui.details.customview.CTextView
+    <com.example.footballapp.ui.details.custom.CTextView
         android:id="@+id/player_subs_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         app:layout_constraintEnd_toStartOf="@+id/first_container"
         app:layout_constraintTop_toTopOf="@+id/first_container" />
 
-    <com.example.footballapp.ui.details.customview.CTextView
+    <com.example.footballapp.ui.details.custom.CTextView
         android:id="@+id/player_subs_name"
         android:layout_width="wrap_content"
         android:text="djkcnsdjvn"
@@ -130,7 +130,7 @@
     </FrameLayout>
 
 
-    <com.example.footballapp.ui.details.customview.CTextView
+    <com.example.footballapp.ui.details.custom.CTextView
         android:id="@+id/player_subs_out"
         app:layout_constraintEnd_toStartOf="@+id/second_player_frame_container"
         app:layout_constraintTop_toTopOf="@+id/second_player_frame_container"

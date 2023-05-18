@@ -53,14 +53,14 @@
         app:layout_constraintEnd_toStartOf="@+id/second_payer_image_frame"
         app:layout_constraintTop_toTopOf="@+id/second_payer_image_frame">
 
-        <com.example.footballapp.ui.details.customview.CTextView
+        <com.example.footballapp.ui.details.custom.CTextView
             android:id="@+id/second_player_behaviour"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="payer_image_frame"
             app:layout_constraintStart_toStartOf="@+id/payer_image_frame" />
 
-        <com.example.footballapp.ui.details.customview.CTextView
+        <com.example.footballapp.ui.details.custom.CTextView
             android:id="@+id/second_player_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
