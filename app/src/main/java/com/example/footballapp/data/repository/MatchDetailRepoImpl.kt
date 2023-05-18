@@ -3,10 +3,12 @@ package com.example.footballapp.data.repository
 import com.example.footballapp.data.models.MatchDetailDto
 import com.example.footballapp.data.network.base.BaseApiCallback
 import com.example.footballapp.data.network.service.FootballApi
+import com.example.footballapp.domain.repository.MatchDetailsRepo
 
-class FootballRepoImpl(private val api: FootballApi): BaseApiCallback() {
+class MatchDetailRepoImpl(private val api: FootballApi): BaseApiCallback(), MatchDetailsRepo {
 
-    suspend fun getInfo(): MatchDetailDto{
+
+    override suspend fun fetchMatchDetails(): MatchDetailDto {
         return apiRequest { api.fetchMathDetails() }
     }
 }

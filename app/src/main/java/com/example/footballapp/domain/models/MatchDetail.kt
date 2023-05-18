@@ -14,7 +14,7 @@ data class Match(
     var matchTime: Double?,
     var matchDate: Long?,
     var stadiumAdress: String?,
-    var matchSummary: MatchSummary
+    var matchSummary: MatchSummary?
 ): Serializable
 
 
@@ -26,7 +26,7 @@ data class TeamInformation(
 ): Serializable
 
 data class MatchSummary(
-    var matchSummaries: List<MatchSummaries>?
+    var matchSummaries: List<MatchSummaries?>
 ): Serializable
 
 data class MatchSummaries(

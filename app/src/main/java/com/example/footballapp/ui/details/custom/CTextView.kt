@@ -17,7 +17,7 @@ class CTextView(context: Context, attributeSet: AttributeSet): AppCompatTextView
         this.typeface = Typeface.DEFAULT_BOLD
     }
 
-    fun setData(text: String? = null, size: Float? = null, color: Int? = null){
+    fun setTextInfo(text: String? = null, size: Float? = null, color: Int? = null){
         text?.let {
             this.text = it
         }

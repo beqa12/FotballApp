@@ -12,22 +12,16 @@
         android:gravity="center"
         android:layout_marginTop="12dp"
         android:layout_height="wrap_content">
-        <androidx.appcompat.widget.AppCompatTextView
+        <com.example.footballapp.ui.details.custom.CTextView
             android:id="@+id/match_date"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="2 September 2018 "
-            android:textSize="12sp"
-            android:textColor="@color/green"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <com.example.footballapp.ui.details.custom.CTextView
             android:id="@+id/match_stadium"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Camp Now Stadium"
-            android:textSize="12sp"
             android:layout_marginStart="8dp"
-            android:textColor="@color/_B1B1B1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -56,9 +50,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             android:id="@+id/first_team_logo"
-            android:src="@drawable/barsa_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:scaleType="centerCrop"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
         <com.example.footballapp.ui.details.custom.CTextView
             android:id="@+id/first_team_name"
@@ -84,9 +78,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:id="@+id/second_team_logo"
-            android:src="@drawable/huesca_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:scaleType="centerCrop"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
 
         <com.example.footballapp.ui.details.custom.CTextView
             android:id="@+id/second_team_name"

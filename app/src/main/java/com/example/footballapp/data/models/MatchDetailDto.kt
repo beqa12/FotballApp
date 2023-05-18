@@ -24,7 +24,7 @@ data class MatchDto(
     @SerializedName("stadiumAdress")
     var stadiumAdress: String?,
     @SerializedName("matchSummary")
-    var matchSummary: MatchSummaryDto
+    var matchSummary: MatchSummaryDto?
 ): Serializable
 
 data class TeamInformationDto(

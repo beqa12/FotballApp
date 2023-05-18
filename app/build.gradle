@@ -65,7 +65,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.0'
 
     // glide
-    def GLIDE = '4.12.0'
+    def GLIDE = '4.15.1'
     implementation "com.github.bumptech.glide:glide:$GLIDE"
     annotationProcessor "com.github.bumptech.glide:compiler:$GLIDE"
 

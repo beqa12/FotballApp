@@ -1,6 +1,8 @@
 package com.example.footballapp.data.network.base
 
 import com.example.footballapp.utils.ApiExceptions
+import com.example.footballapp.utils.SERVER_ERROR
+import com.example.footballapp.utils.UNKNOWN_ERROR
 import retrofit2.Response
 
 abstract class BaseApiCallback {
@@ -13,10 +15,10 @@ abstract class BaseApiCallback {
         } else {
             error = when {
                 response.code() == 500 -> {
-                    "SERVER_ERROR"
+                    SERVER_ERROR
                 }
                 else -> {
-                    "UNKNOWN_ERROR" + response.code()
+                    UNKNOWN_ERROR + response.code()
                 }
             }
         }
