@@ -6,11 +6,6 @@
     android:layout_height="match_parent"
     android:background="@color/_CCFFFFFF">
 
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
         <View
             android:layout_width="match_parent"
             android:background="@color/green"
@@ -90,11 +85,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:cardCornerRadius="20dp"
-            android:layout_marginTop="20dp"
+            android:paddingTop="20dp"
             android:layout_marginStart="13dp"
             android:layout_marginEnd="13dp"
             app:cardBackgroundColor="@color/white"
-            android:elevation="10dp"
+            android:elevation="5dp"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             >
 
@@ -139,5 +134,13 @@
         </androidx.cardview.widget.CardView>
 
 
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:indeterminate="false"
+        android:visibility="gone"
+        android:elevation="10dp"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -27,7 +27,7 @@ class MatchCategoriesCustomView(context: Context, attributeSet: AttributeSet?): 
     }
 
     private fun getListOfNames(): List<String>{
-        return arrayListOf("Overview", "Statistic", "Lineup")
+        return arrayListOf(mContext.getString(R.string.overview), mContext.getString(R.string.statistic), mContext.getString(R.string.line_up))
     }
 
     private fun addCategories(){

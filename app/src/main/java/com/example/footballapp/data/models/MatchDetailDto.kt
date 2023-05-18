@@ -75,20 +75,4 @@ data class PlayerDto(
     var playerImage: String?
 ): Serializable
 
-enum class MatchActionType(actionType: Int){
-    GOAL (1),
-    YELLOW_CARD (2),
-    RED_CARD (3),
-    SUBSTITUTION (4)
-}
-
-enum class GoalType(goalType: Int){
-    GOAL(1),
-    OWN_GOAL(2)
-}
-
-enum class MatchTeamType(teamType: Int){
-    TEAM1  (1),
-    TEAM2  (2)
-}
 

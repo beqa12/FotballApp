@@ -20,15 +20,17 @@ class MatchDetailViewModel(private val matchDetailUseCase: MatchDetailsUseCase) 
     val matchDetails: LiveData<Status<MatchDetail>> get() = _matchDetails
 
     fun fetchDataMatchDetails() {
+        showLoader()
         viewModelScope.launch {
             try {
                 val response = matchDetailUseCase.execute()
                 withContext(Dispatchers.Main) {
+                    hideLoader()
                     _matchDetails.value = Status.SUCCESS(response, "Success")
                 }
             } catch (e: Exception) {
+                hideLoader()
                 handleExceptions(e, _matchDetails)
-                e.printStackTrace()
             }
         }
 

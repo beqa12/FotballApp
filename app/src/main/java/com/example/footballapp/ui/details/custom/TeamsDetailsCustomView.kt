@@ -51,7 +51,6 @@ class TeamsDetailsCustomView(context: Context, attributeSet: AttributeSet): Cons
         binding.secondTeamPossession.setTextInfo("$secondTeamsPosession%", 12f, mContext.getColor(R.color._B1B1B1))
         binding.firstHalfTv.setTextInfo(context.getString(R.string.first_half), size = 9f, color = mContext.getColor(R.color._B0B0B0))
         binding.firstHalfResultTv.setTextInfo(("1:1"),size = 9f, color = mContext.getColor(R.color._B0B0B0))
-
     }
 
 }

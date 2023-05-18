@@ -1,14 +1,23 @@
 package com.example.footballapp.data.mappers
 
+import android.util.Log
 import com.example.footballapp.data.models.MatchDetailDto
-import com.example.footballapp.domain.models.Match
-import com.example.footballapp.domain.models.MatchDetail
-import com.example.footballapp.domain.models.MatchSummary
-import com.example.footballapp.domain.models.TeamInformation
+import com.example.footballapp.domain.models.*
 
 class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
 
     override fun mapToDomainModel(dto: MatchDetailDto): MatchDetail {
+
+
+        val test = ArrayList<Player>()
+
+        val matchSummaries = ArrayList<MatchSummaries>()
+
+        val teamsActions = ArrayList<TeamAction>()
+
+        val playerActions = ArrayList<ActionTest>()
+
+
         val team1Information = TeamInformation(
             teamName = dto.match.team1?.teamName,
             teamImage = dto.match.team1?.teamImage,
@@ -31,8 +40,43 @@ class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
             matchSummary = null
         )
 
+        dto.match.matchSummary?.matchSummaries?.forEach { matchSummaryDto ->
+            val players = ArrayList<PlayerTest>()
+            matchSummaryDto.team1Action?.forEach { actionDto ->
+                actionDto.action?.players?.forEach { playerDto ->
+                    val player = PlayerTest(
+                        playerName = playerDto?.playerName,
+                        playerImage = playerDto?.playerImage,
+                        goalType = actionDto.action?.goalType,
+                        teamType = actionDto.teamType,
+                        actionType = actionDto.actionType
+                    )
+                    players.add(player)
+                }
+            }
 
+            matchSummaryDto.team2Action?.forEach { actionDto ->
+                actionDto.action?.players?.forEach { playerDto ->
+                    val player = PlayerTest(
+                        playerName = playerDto?.playerName,
+                        playerImage = playerDto?.playerImage,
+                        goalType = actionDto.action?.goalType,
+                        teamType = actionDto.teamType,
+                        actionType = actionDto.actionType
+                    )
+                    players.add(player)
+                }
+            }
 
+            val actionTest = ActionTest(
+                player = players,
+                actionTime = matchSummaryDto.actionTime
+            )
+            playerActions.add(actionTest)
+        }
+        playerActions.forEach {
+            Log.e("TAG", "Domain -> $it")
+        }
 
         return MatchDetail(
             resultCode = dto.resultCode,

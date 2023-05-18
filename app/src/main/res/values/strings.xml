@@ -16,4 +16,7 @@
     <string name="game_week">Gameweek 3</string>
     <string name="ball_possession_title">Ball possession</string>
     <string name="first_half">1st Half</string>
+    <string name="overview">Overview</string>
+    <string name="statistic">Statistic</string>
+    <string name="line_up">Line up</string>
 </resources>

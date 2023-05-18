@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import com.example.footballapp.R
 import com.example.footballapp.databinding.MatchDetailFragmentLayoutBinding
 import com.example.footballapp.domain.resource.Status
 import com.example.footballapp.ui.base.BaseFragment
@@ -21,7 +23,14 @@ class MatchDetailFragment : BaseFragment<MatchDetailFragmentLayoutBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-       fetchData()
+        initActions()
+        fetchData()
+    }
+
+    private fun initActions(){
+        binding.backArrow.setOnClickListener {
+            requireActivity().finish()
+        }
     }
 
     private fun fetchData(){
@@ -34,16 +43,19 @@ class MatchDetailFragment : BaseFragment<MatchDetailFragmentLayoutBinding>() {
             when(it){
                 is Status.SUCCESS -> {
                     binding.teamsDetailCustomView.setData(it.data)
-                    Log.e("TAG", "MatchInfo -> ${it.data.match}")
+//                    Log.e("TAG", "MatchInfo -> ${it.data.match}")
                 }
                 is Status.ERROR -> {
                     requireContext().showToast(it.errorMessage)
                 }
                 is Status.NO_INTERNET -> {
-                    requireContext().showToast("No Internet")
+                    requireContext().showToast(requireContext().getString(R.string.internet_problem))
                 }
                 else -> println("Error occurred")
             }
+        }
+        matchDetailViewmodel.progressBar.observe(viewLifecycleOwner){
+            binding.progressBar.isVisible = it
         }
     }
 }
