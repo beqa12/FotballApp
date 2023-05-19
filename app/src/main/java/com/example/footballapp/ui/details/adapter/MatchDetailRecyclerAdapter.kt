@@ -24,7 +24,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
     private val FIRST_TEAM_HOLDER_TYPE = 1
     private val SECOND_TEAM_HOLDER_TYPE = 2
-    private val BOTH_TEAM_TOGETHER_HOLDER_TYPE = 3
+    private val BOTH_TEAM_HOLDER_TYPE = 3
     private val SUBSTITUTION_TYPE = 3
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -37,7 +37,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                 val binding = SecondTeamItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
                 SecondTeamViewHolder(binding)
             }
-            BOTH_TEAM_TOGETHER_HOLDER_TYPE -> {
+            BOTH_TEAM_HOLDER_TYPE -> {
                 val binding = BothTeamItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
                 BothTeamViewHolder(binding)
             }
@@ -70,7 +70,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
     override fun getItemViewType(position: Int): Int {
         val action = matchDetailsActions.get(position)
-        if (action.isBothTeam) return BOTH_TEAM_TOGETHER_HOLDER_TYPE
+        if (action.isBothTeam) return BOTH_TEAM_HOLDER_TYPE
         action.player.forEachIndexed { index, playerTest ->
             when(playerTest?.teamType){
                 MatchTeamType.TEAM1().teamType -> {
@@ -180,11 +180,10 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                 when(player?.teamType ){
                     MatchTeamType.TEAM1().teamType -> {
                         binding.firstTeamPlayerImg.loadImage( DEFAULT_PLAYER_IMG)
-                        binding.playerName.setTextInfo(player.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
+                        binding.playerName.setTextInfo(action.player.get(0)?.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
 
                         when(player.actionType){
                             MatchActionType.GOAL().actionType -> {
-
                                 when(player.goalType){
                                     GoalType.GOAL().goalType -> {
                                         binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.goals_by)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
@@ -209,6 +208,8 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                                binding.firstTeamSubsOutLayout.root.show()
                                binding.firstTeamSubsOutLayout.firstTeamPlayerSubsOutImg.loadImage(
                                    DEFAULT_PLAYER_IMG)
+                               binding.playerName.setTextInfo(action.player.get(0)?.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
+
                                binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
                                binding.firstTeamSubsOutLayout.playerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))
@@ -246,6 +247,9 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                                 binding.secondTeamSubsOutLayout.root.show()
                                 binding.secondTeamSubsOutLayout.secondTeamPlayerSubsOutImg.loadImage(
                                     DEFAULT_PLAYER_IMG)
+                                binding.secondPlayerName.setTextInfo(player.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
+
+                                binding.secondPlayerName.setTextInfo(action.player.get(0)?.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
                                 binding.secondPlayerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
                                 binding.secondTeamSubsOutLayout.secondPlayerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
                                 binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))

@@ -51,7 +51,6 @@
         android:gravity="end"
         app:layout_constraintBottom_toBottomOf="@+id/second_team_player_subs_out_image_frame"
         app:layout_constraintTop_toTopOf="@+id/second_team_player_subs_out_image_frame"
-        android:text="djkcnsdjvn"
         app:layout_constraintStart_toEndOf="@+id/second_player_subs_out_img"
         app:layout_constraintEnd_toStartOf="@+id/second_team_player_subs_out_image_frame"
         />

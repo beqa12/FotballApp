@@ -41,6 +41,7 @@ class TeamsDetailsCustomView(context: Context, attributeSet: AttributeSet): Cons
         binding.secondTeamLogo.loadImage(match.match.team2?.teamImage.toString())
         binding.matchDate.setTextInfo(DateTimeHelper.getMatchDate(match.match.matchDate!!.toLong()), 12f, mContext.getColor(R.color.green))
         binding.matchStadium.setTextInfo(match.match.stadiumAdress, 12f, mContext.getColor(R.color._B1B1B1))
+        binding.matchTime.setTextInfo(match.match.matchTime.toString() + "'", size = 12f, color = mContext.getColor(R.color._B1B1B1))
     }
 
     private fun setBallPossession(firstTeamPossession: Int){
