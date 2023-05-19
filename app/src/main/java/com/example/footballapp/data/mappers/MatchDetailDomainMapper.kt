@@ -18,6 +18,7 @@ class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
         val playerActions = ArrayList<ActionTest>()
 
 
+
         val team1Information = TeamInformation(
             teamName = dto.match.team1?.teamName,
             teamImage = dto.match.team1?.teamImage,
@@ -67,10 +68,15 @@ class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
                     players.add(player)
                 }
             }
+            var isBothTeam = false
+            if (matchSummaryDto.team1Action != null && matchSummaryDto.team2Action != null){
+                isBothTeam = true
+            }
 
             val actionTest = ActionTest(
                 player = players,
-                actionTime = matchSummaryDto.actionTime
+                actionTime = matchSummaryDto.actionTime,
+                isBothTeam = isBothTeam
             )
             playerActions.add(actionTest)
         }

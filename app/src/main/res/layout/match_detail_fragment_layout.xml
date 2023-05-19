@@ -126,6 +126,16 @@
                         android:clipToPadding="false"
                         android:paddingBottom="30dp"
                         android:layout_height="0dp"/>
+
+                <View
+                    android:id="@+id/first_player_subs_out_line_view"
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:background="@color/_CCFFFFFF"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/recycler"
+                    app:layout_constraintTop_toTopOf="@+id/recycler" />
 <!--                </androidx.core.widget.NestedScrollView>-->
 
             </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,15 +1,15 @@
 package com.example.footballapp.ui.details.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import com.example.footballapp.databinding.BothSubsLayoutBinding
 import com.example.footballapp.databinding.BothTeamItemLayoutBinding
 import com.example.footballapp.databinding.FirstTeamItemLayoutBinding
 import com.example.footballapp.databinding.SecondTeamItemLayoutBinding
-import com.example.footballapp.domain.models.ActionTest
-import com.example.footballapp.domain.models.MatchActionType
-import com.example.footballapp.domain.models.MatchTeamType
-import com.example.footballapp.domain.models.PlayerTest
+import com.example.footballapp.domain.models.*
 
 class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private val matchDetailsActions = ArrayList<ActionTest>()
@@ -17,6 +17,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
     private val FIRST_TEAM_HOLDER_TYPE = 1
     private val SECOND_TEAM_HOLDER_TYPE = 2
     private val BOTH_TEAM_TOGETHER_HOLDER_TYPE = 3
+    private val SUBSTITUTION_TYPE = 3
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when(viewType){
@@ -32,6 +33,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                 val binding = BothTeamItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
                 BothTeamViewHolder(binding)
             }
+
             else -> {
                 val binding = FirstTeamItemLayoutBinding.inflate(LayoutInflater.from(parent.context),parent, false)
                 FirstTeamViewHolder(binding)
@@ -48,6 +50,9 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
             is SecondTeamViewHolder -> {
                 holder.setData(action)
             }
+            is BothTeamViewHolder -> {
+                holder.setData(action)
+            }
         }
     }
 
@@ -57,6 +62,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
     override fun getItemViewType(position: Int): Int {
         val action = matchDetailsActions.get(position)
+        if (action.isBothTeam) return BOTH_TEAM_TOGETHER_HOLDER_TYPE
         action.player.forEachIndexed { index, playerTest ->
             when(playerTest?.teamType){
                 MatchTeamType.TEAM1().teamType -> {
@@ -83,7 +89,24 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
     }
     inner class BothTeamViewHolder(val binding: BothTeamItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
         fun setData(action: ActionTest){
+            action.player.forEach {
+                when(it?.teamType ){
+                    MatchTeamType.TEAM1().teamType -> {
+                        when(it.actionType){
+                           MatchActionType.SUBSTITUTION().actionType ->{
+                               binding.firstTeamSubsOutLayout.root.visibility = View.VISIBLE
 
+                           }
+                        }
+                    }
+                    MatchTeamType.TEAM2().teamType -> {
+                        when(it.actionType){
+                            MatchActionType.SUBSTITUTION().actionType ->{
+                                binding.secondTeamSubsOutLayout.root.visibility = View.VISIBLE
+                            }
+                        }
+                    }
+                }            }
         }
     }
 

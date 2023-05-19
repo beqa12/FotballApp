@@ -63,22 +63,24 @@ data class PlayerTest(
 
 data class ActionTest(
     var player: List<PlayerTest?>,
-    var actionTime: String?
+    var actionTime: String?,
+    var isBothTeam: Boolean = false
 ): Serializable
 
-enum class MatchActionType(actionType: Int){
-    GOAL (1),
-    YELLOW_CARD (2),
-    RED_CARD (3),
-    SUBSTITUTION (4)
+sealed class MatchActionType{
+    data class GOAL(val actionType: Int = 1): MatchActionType()
+    data class YELLOW_CARD(val actionType: Int = 2): MatchActionType()
+    data class RED_CARD(val actionType: Int = 3): MatchActionType()
+    data class SUBSTITUTION(val actionType: Int = 4): MatchActionType()
 }
 
-enum class GoalType(goalType: Int){
-    GOAL(1),
-    OWN_GOAL(2)
+sealed class GoalType {
+    data class GOAL(val goalType: Int = 1) : GoalType()
+    data class OWN_GOAL(val goalType: Int = 2) : GoalType()
+
 }
 
-sealed class MatchTeamType(){
+sealed class MatchTeamType{
     data class TEAM1(val teamType: Int = 1): MatchTeamType()
     data class TEAM2(val teamType: Int = 2): MatchTeamType()
 }

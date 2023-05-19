@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp"
     android:background="@color/black"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -77,20 +79,11 @@
         android:layout_marginStart="14dp"
         app:layout_constraintStart_toStartOf="@+id/guide_fifty_percentage" />
 
-    <View
-        android:id="@+id/second_player_line_view"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@color/_CCFFFFFF"
+    <androidx.appcompat.widget.AppCompatImageView
         app:layout_constraintStart_toStartOf="@+id/guide_fifty_percentage"
         app:layout_constraintEnd_toEndOf="@+id/guide_fifty_percentage"
-        android:layout_width="2dp"
-        android:layout_height="wrap_content"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        app:layout_constraintStart_toStartOf="@+id/second_player_line_view"
-        app:layout_constraintEnd_toEndOf="@+id/second_player_line_view"
-        app:layout_constraintTop_toTopOf="@+id/second_player_behaviour_img"
-        app:layout_constraintBottom_toBottomOf="@+id/second_player_behaviour_img"
+        app:layout_constraintTop_toTopOf="@+id/second_payer_image_frame"
+        app:layout_constraintBottom_toBottomOf="@+id/second_payer_image_frame"
         android:src="@drawable/player_action_dot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
