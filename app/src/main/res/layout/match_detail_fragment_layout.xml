@@ -52,6 +52,14 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/red_dot"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/not_red_oval"
+                            app:layout_constraintEnd_toEndOf="@+id/not_icon"
+                            app:layout_constraintTop_toTopOf="@+id/not_icon" />
+
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/match_preview"
                             android:layout_width="wrap_content"
