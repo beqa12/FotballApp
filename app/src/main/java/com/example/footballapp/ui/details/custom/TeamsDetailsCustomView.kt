@@ -2,7 +2,6 @@ package com.example.footballapp.ui.details.custom
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.footballapp.R
@@ -19,7 +18,6 @@ class TeamsDetailsCustomView(context: Context, attributeSet: AttributeSet): Cons
 
     init {
         init()
-
     }
 
     private fun init(){
@@ -39,10 +37,10 @@ class TeamsDetailsCustomView(context: Context, attributeSet: AttributeSet): Cons
         }
         binding.firstTeamLogo.loadImage(match.match.team1?.teamImage.toString())
         binding.secondTeamLogo.loadImage(match.match.team2?.teamImage.toString())
-        binding.matchDate.setTextInfo(DateTimeHelper.getMatchDate(match.match.matchDate!!.toLong()), 12f, mContext.getColor(R.color.green))
+        binding.matchDate.setTextInfo(DateTimeHelper.getMatchDate(match.match.matchDate!!.toLong(), "d MMMM yyyy"), 12f, mContext.getColor(R.color.green))
         binding.matchStadium.setTextInfo(match.match.stadiumAdress, 12f, mContext.getColor(R.color._B1B1B1))
         binding.matchTime.setTextInfo(match.match.matchTime.toString() + "'", size = 12f, color = mContext.getColor(R.color._B1B1B1))
-        setFirstHalfResult(match)
+        setHalfTimeResult(match)
     }
 
     private fun setBallPossession(firstTeamPossession: Int){
@@ -54,7 +52,7 @@ class TeamsDetailsCustomView(context: Context, attributeSet: AttributeSet): Cons
 
     }
 
-    private fun setFirstHalfResult(match: MatchDetail){
+    private fun setHalfTimeResult(match: MatchDetail){
         binding.firstHalfTv.setTextInfo(context.getString(R.string.first_half), size = 9f, color = mContext.getColor(R.color._B0B0B0))
         binding.firstHalfResultTv.setTextInfo("${match.firstTeamHalfTimeResult}:${match.secondTeamHalfTimeResult}",size = 9f, color = mContext.getColor(R.color._B0B0B0))
     }

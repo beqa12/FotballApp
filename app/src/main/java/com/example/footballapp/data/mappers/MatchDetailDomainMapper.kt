@@ -12,7 +12,6 @@ class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
 
         val playerActions = ArrayList<Action>()
 
-
         val team1Information = TeamInformation(
             teamName = dto.match.team1?.teamName,
             teamImage = dto.match.team1?.teamImage,

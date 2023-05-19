@@ -43,16 +43,6 @@ data class TeamAction(
     var action: Action?
 ): Serializable
 
-//data class Action(
-//    var player: List<Player?>,
-//    var goalType: Int?
-//): Serializable
-
-//data class Player(
-//    var playerName: String?,
-//    var playerImage: String?,
-//): Serializable
-
 data class Player(
     var playerName: String?,
     var playerImage: String?,
@@ -60,8 +50,6 @@ data class Player(
     var teamType: Int?,
     var actionType: Int?
 ): Serializable
-
-
 
 data class Action(
     var player: List<Player?>,
