@@ -2,6 +2,7 @@ package com.example.footballapp.ui.details.custom
 
 import android.content.Context
 import android.graphics.Typeface
+import android.text.TextUtils
 import android.util.AttributeSet
 import androidx.appcompat.widget.AppCompatTextView
 import com.example.footballapp.R
@@ -17,7 +18,7 @@ class CTextView(context: Context, attributeSet: AttributeSet): AppCompatTextView
         this.typeface = Typeface.DEFAULT_BOLD
     }
 
-    fun setTextInfo(text: String? = null, size: Float? = null, color: Int? = null){
+    fun setTextInfo(text: String? = null, size: Float? = null, color: Int? = null, maxLines: Int? = null, ellipsize: TextUtils.TruncateAt? = null){
         text?.let {
             this.text = it
         }
@@ -26,6 +27,12 @@ class CTextView(context: Context, attributeSet: AttributeSet): AppCompatTextView
         }
         color?.let {
             this.setTextColor(it)
+        }
+        maxLines?.let {
+            this.maxLines = it
+        }
+        ellipsize?.let {
+            this.ellipsize = it
         }
     }
 }

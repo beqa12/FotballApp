@@ -82,6 +82,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:cardCornerRadius="20dp"
@@ -127,16 +128,21 @@
                         android:paddingBottom="30dp"
                         android:layout_height="0dp"/>
 
-                <View
-                    android:id="@+id/first_player_subs_out_line_view"
-                    android:layout_width="2dp"
-                    android:layout_height="0dp"
-                    android:background="@color/_CCFFFFFF"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toBottomOf="@+id/recycler"
-                    app:layout_constraintTop_toTopOf="@+id/recycler" />
 <!--                </androidx.core.widget.NestedScrollView>-->
+
+                <LinearLayout
+                    android:id="@+id/first_player_subs_out_line_view"
+                    android:layout_width="0.4dp"
+                    android:layout_height="0dp"
+                    android:background="@color/_80FFFFFF"
+                    android:elevation="1dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintStart_toStartOf="@+id/recycler"
+                    app:layout_constraintEnd_toEndOf="@+id/recycler"
+                    app:layout_constraintTop_toTopOf="@+id/recycler"
+                    app:layout_constraintBottom_toBottomOf="@+id/recycler"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

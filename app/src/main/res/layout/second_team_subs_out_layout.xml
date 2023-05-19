@@ -28,15 +28,14 @@
             android:layout_width="65dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:background="@drawable/fooballer_oval_bg"
             android:scaleType="centerCrop" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/second_team_player_subs_out_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:padding="7dp"
+            android:padding="5dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/second_team_player_subs_out_oval"
             app:layout_constraintEnd_toEndOf="@+id/second_team_player_subs_out_oval"
@@ -47,12 +46,13 @@
 
     <com.example.footballapp.ui.details.custom.CTextView
         android:id="@+id/second_player_subs_out_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:gravity="end"
         app:layout_constraintBottom_toBottomOf="@+id/second_team_player_subs_out_image_frame"
         app:layout_constraintTop_toTopOf="@+id/second_team_player_subs_out_image_frame"
         android:text="djkcnsdjvn"
+        app:layout_constraintStart_toEndOf="@+id/second_player_subs_out_img"
         app:layout_constraintEnd_toStartOf="@+id/second_team_player_subs_out_image_frame"
         />
 
@@ -60,7 +60,7 @@
         android:id="@+id/second_player_subs_out_img"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="8dp"
         android:src="@drawable/substitution_out_img"
         app:layout_constraintBottom_toBottomOf="@+id/second_team_player_subs_out_image_frame"
         app:layout_constraintStart_toEndOf="@+id/second_team_subs_out_guide"

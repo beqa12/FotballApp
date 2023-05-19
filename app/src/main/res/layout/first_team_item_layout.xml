@@ -6,7 +6,7 @@
     android:paddingTop="5dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center_horizontal"
-    android:background="@color/black">
+    >
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -31,15 +31,14 @@
             android:layout_width="65dp"
             android:layout_height="60dp"
             android:layout_gravity="center"
-            android:background="@drawable/fooballer_oval_bg"
             android:scaleType="centerCrop" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/first_team_player_img"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:padding="7dp"
+            android:padding="5dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="@+id/oval"
             app:layout_constraintEnd_toEndOf="@+id/oval"
@@ -47,28 +46,23 @@
             app:layout_constraintTop_toTopOf="@+id/oval" />
     </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/payer_image_frame"
-        app:layout_constraintStart_toEndOf="@+id/payer_image_frame"
-        app:layout_constraintTop_toTopOf="@+id/payer_image_frame">
 
         <com.example.footballapp.ui.details.custom.CTextView
             android:id="@+id/player_behaviour"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
+            app:layout_constraintStart_toEndOf="@+id/payer_image_frame"
+            app:layout_constraintTop_toTopOf="@+id/payer_image_frame"
+            android:layout_marginTop="5dp"
             android:layout_height="wrap_content"
-            android:text="payer_image_frame"
-            app:layout_constraintStart_toStartOf="@+id/payer_image_frame" />
+            app:layout_constraintEnd_toStartOf="@+id/player_behaviour_img" />
 
         <com.example.footballapp.ui.details.custom.CTextView
             android:id="@+id/player_name"
-            android:layout_width="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/player_behaviour"
+            android:layout_width="0dp"
+            app:layout_constraintEnd_toStartOf="@+id/player_behaviour_img"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/payer_image_frame" />
-    </LinearLayout>
+            app:layout_constraintStart_toStartOf="@+id/player_behaviour" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/player_behaviour_img"
@@ -88,6 +82,5 @@
         android:src="@drawable/player_action_dot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
