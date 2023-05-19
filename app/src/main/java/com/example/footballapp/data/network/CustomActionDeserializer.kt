@@ -1,4 +1,4 @@
-package com.example.footballapp.ui.details.custom
+package com.example.footballapp.data.network
 
 import com.example.footballapp.data.models.ActionDto
 import com.example.footballapp.data.models.PlayerDto

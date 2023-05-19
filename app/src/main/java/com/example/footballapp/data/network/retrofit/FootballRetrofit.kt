@@ -3,7 +3,7 @@ package com.example.footballapp.data.network.retrofit
 import com.example.footballapp.data.models.ActionDto
 import com.example.footballapp.data.network.endpoints.Endpoints
 import com.example.footballapp.data.network.interceptors.NoConnectionInterceptor
-import com.example.footballapp.ui.details.custom.CustomActionDeserializer
+import com.example.footballapp.data.network.CustomActionDeserializer
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

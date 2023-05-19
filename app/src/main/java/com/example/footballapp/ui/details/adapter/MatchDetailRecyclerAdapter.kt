@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.example.footballapp.R
 import com.example.footballapp.databinding.BothTeamItemLayoutBinding
@@ -76,7 +77,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                 }
             }
         }
-        return 0
+        return FIRST_TEAM_HOLDER_TYPE
     }
 
     inner class FirstTeamViewHolder(val binding: FirstTeamItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
@@ -92,21 +93,21 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                                 when(player.goalType){
                                     GoalType.GOAL().goalType -> {
                                         binding.playerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.goals_by)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                        binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.goal_icon))
+                                        binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.goal_icon))
                                     }
                                     GoalType.OWN_GOAL().goalType -> {
                                         binding.playerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.own_goal)}", size = 10f, color = itemView.context.getColor(R.color._FF0000), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                        binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.own_goal_icon))
+                                        binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.own_goal_icon))
                                     }
                                 }
                             }
                             MatchActionType.YELLOW_CARD().actionType -> {
                                 binding.playerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.yellow_card))
+                                binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.yellow_card))
                             }
                             MatchActionType.RED_CARD().actionType -> {
                                 binding.playerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.unsportsmanlike_conduct)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.red_card))
+                                binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.red_card))
                             }
 
                             MatchActionType.SUBSTITUTION().actionType ->{
@@ -115,7 +116,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                                     DEFAULT_PLAYER_IMG)
                                 binding.playerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
                                 binding.firstTeamSubsOutLayout.playerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))
+                                binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.substitution_in_img))
 
                             }
                         }
@@ -137,33 +138,31 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                                 when(player.goalType){
                                     GoalType.GOAL().goalType -> {
                                         binding.secondPlayerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.goals_by)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                        binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.goal_icon))
+                                        binding.secondPlayerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.goal_icon))
                                     }
                                     GoalType.OWN_GOAL().goalType -> {
                                         binding.secondPlayerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.own_goal)}", size = 10f, color = itemView.context.getColor(R.color._FF0000), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                        binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.own_goal_icon))
+                                        binding.secondPlayerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.own_goal_icon))
                                     }
                                 }
                             }
                             MatchActionType.YELLOW_CARD().actionType -> {
                                 binding.secondPlayerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.yellow_card))
+                                binding.secondPlayerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.yellow_card))
                             }
                             MatchActionType.RED_CARD().actionType -> {
                                 binding.secondPlayerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.red_card))
+                                binding.secondPlayerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.red_card))
                             }
 
                             MatchActionType.SUBSTITUTION().actionType ->{
                                 binding.secondTeamSubsOutLayout.root.show()
                                 binding.secondTeamSubsOutLayout.secondTeamPlayerSubsOutImg.loadImage(
                                     DEFAULT_PLAYER_IMG)
-                                binding.secondPlayerName.setTextInfo(player.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-
                                 binding.secondPlayerName.setTextInfo(action.player.get(0)?.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
                                 binding.secondPlayerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
                                 binding.secondTeamSubsOutLayout.secondPlayerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))
+                                binding.secondPlayerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.substitution_in_img))
                             }
                         }
                     }
@@ -184,21 +183,21 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                                 when(player.goalType){
                                     GoalType.GOAL().goalType -> {
                                         binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.goals_by)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                        binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.goal_icon))
+                                        binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.goal_icon))
                                     }
                                     GoalType.OWN_GOAL().goalType -> {
                                         binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.own_goal)}", size = 10f, color = itemView.context.getColor(R.color._FF0000), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                        binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.own_goal_icon))
+                                        binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.own_goal_icon))
                                     }
                                 }
                             }
                             MatchActionType.YELLOW_CARD().actionType -> {
                                 binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.yellow_card))
+                                binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.yellow_card))
                             }
                             MatchActionType.RED_CARD().actionType -> {
                                 binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.red_card))
+                                binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.red_card))
                             }
 
                            MatchActionType.SUBSTITUTION().actionType ->{
@@ -209,7 +208,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
 
                                binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
                                binding.firstTeamSubsOutLayout.playerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                               binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))
+                               binding.playerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.substitution_in_img))
 
                            }
                         }
@@ -227,25 +226,23 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                                     }
                                     GoalType.OWN_GOAL().goalType -> {
                                         binding.secondPlayerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.own_goal)}", size = 10f, color = itemView.context.getColor(R.color._FF0000), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                        binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.own_goal_icon))
+                                        binding.secondPlayerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.own_goal_icon))
                                     }
                                 }
                             }
                             MatchActionType.YELLOW_CARD().actionType -> {
                                 binding.secondPlayerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.yellow_card))
+                                binding.secondPlayerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.yellow_card))
                             }
                             MatchActionType.RED_CARD().actionType -> {
                                 binding.secondPlayerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.red_card))
+                                binding.secondPlayerBehaviourImg.setImageDrawable(AppCompatResources.getDrawable(binding.root.context,R.drawable.red_card))
                             }
 
                             MatchActionType.SUBSTITUTION().actionType ->{
                                 binding.secondTeamSubsOutLayout.root.show()
                                 binding.secondTeamSubsOutLayout.secondTeamPlayerSubsOutImg.loadImage(
                                     DEFAULT_PLAYER_IMG)
-                                binding.secondPlayerName.setTextInfo(player.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-
                                 binding.secondPlayerName.setTextInfo(action.player.get(0)?.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
                                 binding.secondPlayerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
                                 binding.secondTeamSubsOutLayout.secondPlayerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)

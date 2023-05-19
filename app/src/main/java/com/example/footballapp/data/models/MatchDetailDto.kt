@@ -1,6 +1,6 @@
 package com.example.footballapp.data.models
 
-import com.example.footballapp.ui.details.custom.CustomActionDeserializer
+import com.example.footballapp.data.network.CustomActionDeserializer
 import com.google.gson.annotations.JsonAdapter
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
