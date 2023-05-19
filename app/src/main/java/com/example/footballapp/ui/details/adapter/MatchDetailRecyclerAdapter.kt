@@ -110,12 +110,12 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                             }
 
                             MatchActionType.SUBSTITUTION().actionType ->{
-//                                binding.firstTeamSubsOutLayout.root.show()
-//                                binding.firstTeamSubsOutLayout.firstTeamPlayerSubsOutImg.loadImage(
-//                                    DEFAULT_PLAYER_IMG)
-//                                binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-//                                binding.firstTeamSubsOutLayout.playerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-//                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))
+                                binding.firstTeamSubsOutLayout.root.show()
+                                binding.firstTeamSubsOutLayout.firstTeamPlayerSubsOutImg.loadImage(
+                                    DEFAULT_PLAYER_IMG)
+                                binding.playerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
+                                binding.firstTeamSubsOutLayout.playerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
+                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))
 
                             }
                         }
@@ -155,13 +155,15 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                             }
 
                             MatchActionType.SUBSTITUTION().actionType ->{
-//                                binding.firstTeamSubsOutLayout.root.show()
-//                                binding.firstTeamSubsOutLayout.firstTeamPlayerSubsOutImg.loadImage(
-//                                    DEFAULT_PLAYER_IMG)
-//                                binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-//                                binding.firstTeamSubsOutLayout.playerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-//                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))
+                                binding.secondTeamSubsOutLayout.root.show()
+                                binding.secondTeamSubsOutLayout.secondTeamPlayerSubsOutImg.loadImage(
+                                    DEFAULT_PLAYER_IMG)
+                                binding.secondPlayerName.setTextInfo(player.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
 
+                                binding.secondPlayerName.setTextInfo(action.player.get(0)?.playerName,12f, color = binding.root.context.getColor(R.color.black), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
+                                binding.secondPlayerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.substitution)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
+                                binding.secondTeamSubsOutLayout.secondPlayerSubsOutName.setTextInfo(action.player.get(1)?.playerName,12f, color = binding.root.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
+                                binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.substitution_in_img))
                             }
                         }
                     }

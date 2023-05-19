@@ -83,4 +83,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+
+    <include
+        android:id="@+id/first_team_subs_out_layout"
+        layout="@layout/first_team_subs_out_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/payer_image_frame"
+        app:layout_constraintTop_toBottomOf="@+id/payer_image_frame" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

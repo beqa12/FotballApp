@@ -112,15 +112,6 @@
             app:layout_constraintTop_toTopOf="@+id/oval" />
     </FrameLayout>
 
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="0dp"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:gravity="center_horizontal"-->
-    <!--        android:orientation="vertical"-->
-    <!--        app:layout_constraintStart_toEndOf="@+id/payer_image_frame"-->
-    <!--        app:layout_constraintEnd_toStartOf="@+id/player_behaviour_img"-->
-    <!--        app:layout_constraintTop_toTopOf="@+id/payer_image_frame">-->
-
     <com.example.footballapp.ui.details.custom.CTextView
         android:id="@+id/player_behaviour_title"
         android:layout_width="0dp"
@@ -148,20 +139,10 @@
         app:layout_constraintEnd_toStartOf="@+id/guide_fifty_percentage"
         app:layout_constraintTop_toTopOf="@+id/payer_image_frame" />
 
-<!--    <androidx.appcompat.widget.AppCompatImageView-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/player_action_dot"-->
-<!--        app:layout_constraintBottom_toBottomOf="@+id/payer_image_frame"-->
-<!--        app:layout_constraintEnd_toEndOf="@+id/guide_fifty_percentage"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guide_fifty_percentage"-->
-<!--        app:layout_constraintTop_toTopOf="@+id/payer_image_frame" />-->
-
     <include
         android:id="@+id/second_team_subs_out_layout"
         layout="@layout/second_team_subs_out_layout"
         android:layout_width="match_parent"
-
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/second_payer_image_frame"
         app:layout_constraintEnd_toEndOf="@+id/second_payer_image_frame"
