@@ -5,7 +5,9 @@ import java.io.Serializable
 data class MatchDetail(
     var resultCode: Int?,
     var match: Match,
-    var actions: List<ActionTest>
+    var actions: List<Action>,
+    var firstTeamHalfTimeResult: Int = 0,
+    var secondTeamHalfTimeResult: Int = 0
 )
 
 data class Match(
@@ -41,17 +43,17 @@ data class TeamAction(
     var action: Action?
 ): Serializable
 
-data class Action(
-    var player: List<Player?>,
-    var goalType: Int?
-): Serializable
+//data class Action(
+//    var player: List<Player?>,
+//    var goalType: Int?
+//): Serializable
+
+//data class Player(
+//    var playerName: String?,
+//    var playerImage: String?,
+//): Serializable
 
 data class Player(
-    var playerName: String?,
-    var playerImage: String?,
-): Serializable
-
-data class PlayerTest(
     var playerName: String?,
     var playerImage: String?,
     var goalType: Int?,
@@ -61,8 +63,8 @@ data class PlayerTest(
 
 
 
-data class ActionTest(
-    var player: List<PlayerTest?>,
+data class Action(
+    var player: List<Player?>,
     var actionTime: String?,
     var isBothTeam: Boolean = false
 ): Serializable

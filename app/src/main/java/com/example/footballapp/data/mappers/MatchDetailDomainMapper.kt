@@ -1,22 +1,16 @@
 package com.example.footballapp.data.mappers
 
-import android.util.Log
 import com.example.footballapp.data.models.MatchDetailDto
 import com.example.footballapp.domain.models.*
 
 class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
 
+    var firstTeamHalfTimeResult = 0
+    var secondTeamHalfTimeResult = 0
+
     override fun mapToDomainModel(dto: MatchDetailDto): MatchDetail {
 
-
-        val test = ArrayList<Player>()
-
-        val matchSummaries = ArrayList<MatchSummaries>()
-
-        val teamsActions = ArrayList<TeamAction>()
-
-        val playerActions = ArrayList<ActionTest>()
-
+        val playerActions = ArrayList<Action>()
 
 
         val team1Information = TeamInformation(
@@ -42,28 +36,30 @@ class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
         )
 
         dto.match.matchSummary?.matchSummaries?.forEach { matchSummaryDto ->
-            val players = ArrayList<PlayerTest>()
+            val players = ArrayList<Player>()
             matchSummaryDto.team1Action?.forEach { actionDto ->
-                actionDto?.action?.players?.forEach { playerDto ->
-                    val player = PlayerTest(
+                getHalfTimeResult(actionDto.action?.goalType,matchSummaryDto.actionTime,MatchTeamType.TEAM1())
+                actionDto.action?.players?.forEach { playerDto ->
+                    val player = Player(
                         playerName = playerDto?.playerName,
                         playerImage = playerDto?.playerImage,
-                        goalType = actionDto?.action?.goalType,
-                        teamType = actionDto?.teamType,
-                        actionType = actionDto?.actionType
+                        goalType = actionDto.action?.goalType,
+                        teamType = actionDto.teamType,
+                        actionType = actionDto.actionType
                     )
                     players.add(player)
                 }
             }
 
             matchSummaryDto.team2Action?.forEach { actionDto ->
-                actionDto?.action?.players?.forEach { playerDto ->
-                    val player = PlayerTest(
+                getHalfTimeResult(actionDto.action?.goalType, matchSummaryDto.actionTime, MatchTeamType.TEAM2())
+                actionDto.action?.players?.forEach { playerDto ->
+                    val player = Player(
                         playerName = playerDto?.playerName,
                         playerImage = playerDto?.playerImage,
-                        goalType = actionDto?.action?.goalType,
-                        teamType = actionDto?.teamType,
-                        actionType = actionDto?.actionType
+                        goalType = actionDto.action?.goalType,
+                        teamType = actionDto.teamType,
+                        actionType = actionDto.actionType
                     )
                     players.add(player)
                 }
@@ -73,21 +69,69 @@ class MatchDetailDomainMapper: BaseMapper<MatchDetailDto, MatchDetail> {
                 isBothTeam = true
             }
 
-            val actionTest = ActionTest(
+            val action = Action(
                 player = players,
                 actionTime = matchSummaryDto.actionTime,
                 isBothTeam = isBothTeam
             )
-            playerActions.add(actionTest)
+            playerActions.add(action)
         }
-//        playerActions.forEach {
-//            Log.e("TAG", "Domain -> $it")
-//        }
-
         return MatchDetail(
             resultCode = dto.resultCode,
             match = match,
-            actions = playerActions
+            actions = playerActions,
+            firstTeamHalfTimeResult = firstTeamHalfTimeResult,
+            secondTeamHalfTimeResult = secondTeamHalfTimeResult
         )
+    }
+
+    private fun getHalfTimeResult(goalType: Int?, actionTime: String?, teamType: MatchTeamType){
+        goalType?.let {
+            when(it){
+                GoalType.GOAL().goalType -> {
+                    when(teamType){
+                        MatchTeamType.TEAM1() -> {
+                            if (isFirstHalf(actionTime))
+                                firstTeamHalfTimeResult ++
+                            else
+                                println("Not in the first half")
+                        }
+                        MatchTeamType.TEAM2() -> {
+                            if (isFirstHalf(actionTime))
+                                secondTeamHalfTimeResult ++
+                            else
+                                println("Not in the first half")
+                        }
+                        else -> {}
+                    }
+                }
+                GoalType.OWN_GOAL().goalType -> {
+                    when(teamType){
+                        MatchTeamType.TEAM1() -> {
+                           if (isFirstHalf(actionTime))
+                               secondTeamHalfTimeResult ++
+                            else
+                                println("Not in the first half")
+
+                        }
+                        MatchTeamType.TEAM2() -> {
+                            if (isFirstHalf(actionTime))
+                                firstTeamHalfTimeResult ++
+                            else
+                                println("Not in the first half")
+                        }
+                        else -> {}
+                    }
+                }
+                else -> {}
+            }
+        }
+    }
+
+    private fun isFirstHalf(actionTime: String?): Boolean{
+        actionTime?.let {acTime ->
+            return acTime.toInt() < 46
+        }
+        return false
     }
 }

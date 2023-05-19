@@ -42,6 +42,7 @@ class TeamsDetailsCustomView(context: Context, attributeSet: AttributeSet): Cons
         binding.matchDate.setTextInfo(DateTimeHelper.getMatchDate(match.match.matchDate!!.toLong()), 12f, mContext.getColor(R.color.green))
         binding.matchStadium.setTextInfo(match.match.stadiumAdress, 12f, mContext.getColor(R.color._B1B1B1))
         binding.matchTime.setTextInfo(match.match.matchTime.toString() + "'", size = 12f, color = mContext.getColor(R.color._B1B1B1))
+        setFirstHalfResult(match)
     }
 
     private fun setBallPossession(firstTeamPossession: Int){
@@ -50,8 +51,12 @@ class TeamsDetailsCustomView(context: Context, attributeSet: AttributeSet): Cons
         binding.firstTeamPossession.setTextInfo("$firstTeamPossession%", 12f, mContext.getColor(R.color._B1B1B1))
         val secondTeamsPosession = 100 - firstTeamPossession
         binding.secondTeamPossession.setTextInfo("$secondTeamsPosession%", 12f, mContext.getColor(R.color._B1B1B1))
+
+    }
+
+    private fun setFirstHalfResult(match: MatchDetail){
         binding.firstHalfTv.setTextInfo(context.getString(R.string.first_half), size = 9f, color = mContext.getColor(R.color._B0B0B0))
-        binding.firstHalfResultTv.setTextInfo(("1:1"),size = 9f, color = mContext.getColor(R.color._B0B0B0))
+        binding.firstHalfResultTv.setTextInfo("${match.firstTeamHalfTimeResult}:${match.secondTeamHalfTimeResult}",size = 9f, color = mContext.getColor(R.color._B0B0B0))
     }
 
 }

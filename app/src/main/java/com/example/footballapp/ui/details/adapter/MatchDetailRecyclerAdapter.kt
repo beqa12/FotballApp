@@ -2,25 +2,20 @@ package com.example.footballapp.ui.details.adapter
 
 import android.annotation.SuppressLint
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.example.footballapp.R
-import com.example.footballapp.databinding.BothSubsLayoutBinding
 import com.example.footballapp.databinding.BothTeamItemLayoutBinding
 import com.example.footballapp.databinding.FirstTeamItemLayoutBinding
 import com.example.footballapp.databinding.SecondTeamItemLayoutBinding
 import com.example.footballapp.domain.models.*
 import com.example.footballapp.utils.DEFAULT_PLAYER_IMG
-import com.example.footballapp.utils.RED_CARD_IMG
 import com.example.footballapp.utils.loadImage
 import com.example.footballapp.utils.show
 
 class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-    private val matchDetailsActions = ArrayList<ActionTest>()
+    private val matchDetailsActions = ArrayList<Action>()
 
     private val FIRST_TEAM_HOLDER_TYPE = 1
     private val SECOND_TEAM_HOLDER_TYPE = 2
@@ -85,7 +80,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
     }
 
     inner class FirstTeamViewHolder(val binding: FirstTeamItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun setData(action: ActionTest){
+        fun setData(action: Action){
             action.player.forEach { player ->
                 when(player?.teamType ){
                     MatchTeamType.TEAM1().teamType -> {
@@ -130,7 +125,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
     }
 
     inner class SecondTeamViewHolder(val binding: SecondTeamItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
-        fun setData(action: ActionTest){
+        fun setData(action: Action){
             action.player.forEach { player ->
                 when(player?.teamType ){
                     MatchTeamType.TEAM2().teamType -> {
@@ -175,7 +170,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
     }
     inner class BothTeamViewHolder(val binding: BothTeamItemLayoutBinding): RecyclerView.ViewHolder(binding.root){
         @SuppressLint("UseCompatLoadingForDrawables")
-        fun setData(action: ActionTest){
+        fun setData(action: Action){
             action.player.forEach { player ->
                 when(player?.teamType ){
                     MatchTeamType.TEAM1().teamType -> {
@@ -260,7 +255,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
         }
     }
 
-    fun addPlayerActions(actions: List<ActionTest>){
+    fun addPlayerActions(actions: List<Action>){
         this.matchDetailsActions.clear()
         this.matchDetailsActions.addAll(actions)
         notifyDataSetChanged()

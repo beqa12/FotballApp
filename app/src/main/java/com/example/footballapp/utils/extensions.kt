@@ -18,42 +18,28 @@ import com.example.footballapp.R
 
 fun AppCompatImageView.loadImage(imageUrl: String, isRedCard: Boolean = false) {
 
-    val url = GlideUrl(imageUrl, LazyHeaders.Builder()
+    val url = GlideUrl(
+        imageUrl, LazyHeaders.Builder()
             .addHeader("User-Agent", WebSettings.getDefaultUserAgent(context))
             .build()
     )
-    val ovalImage = if (!isRedCard){
-        CircleCrop()
-    }else{
-        null
-    }
-    if (isRedCard){
-        Glide.with(this.context)
-            .load(url)
-            .diskCacheStrategy(DiskCacheStrategy.ALL) // It will cache your image after loaded for first time
-//        .apply(RequestOptions.centerCropTransform())
-//            .transform(CircleCrop())
-            .into(this)
-    }else{
-        Glide.with(this.context)
-            .load(url)
-            .diskCacheStrategy(DiskCacheStrategy.ALL) // It will cache your image after loaded for first time
-//        .apply(RequestOptions.centerCropTransform())
-            .transform(CircleCrop())
-            .into(this)
-    }
-
+    Glide.with(this.context)
+        .load(url)
+        .diskCacheStrategy(DiskCacheStrategy.ALL) // It will cache your image after loaded for first time
+        .apply(RequestOptions.centerCropTransform())
+        .transform(CircleCrop())
+        .into(this)
 }
 
 
-fun Context.showToast(message: String){
+fun Context.showToast(message: String) {
     Toast.makeText(this, message, Toast.LENGTH_LONG).show()
 }
 
-fun View.show(){
+fun View.show() {
     this.visibility = View.VISIBLE
 }
 
-fun View.gone(){
+fun View.gone() {
     this.visibility = View.GONE
 }

@@ -53,9 +53,7 @@ class MatchDetailFragment : BaseFragment<MatchDetailFragmentLayoutBinding>() {
                 is Status.SUCCESS -> {
                     binding.teamsDetailCustomView.setData(it.data)
                     matchDetailsAdapter.addPlayerActions(it.data.actions)
-                    it.data.actions.forEach {
-                        Log.e("TAG", "MatchInfo -> ${it}")
-                    }
+                    Log.e("TAG", "First -> ${it.data.firstTeamHalfTimeResult}  second -> ${it.data.secondTeamHalfTimeResult}")
 
                 }
                 is Status.ERROR -> {
