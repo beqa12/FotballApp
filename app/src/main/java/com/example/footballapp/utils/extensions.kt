@@ -16,18 +16,33 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.footballapp.R
 
 
-fun AppCompatImageView.loadImage(imageUrl: String) {
+fun AppCompatImageView.loadImage(imageUrl: String, isRedCard: Boolean = false) {
 
     val url = GlideUrl(imageUrl, LazyHeaders.Builder()
             .addHeader("User-Agent", WebSettings.getDefaultUserAgent(context))
             .build()
     )
-    Glide.with(this.context)
-        .load(url)
-        .diskCacheStrategy(DiskCacheStrategy.ALL) // It will cache your image after loaded for first time
-        .apply(RequestOptions.centerCropTransform())
-        .transform(CircleCrop())
-        .into(this)
+    val ovalImage = if (!isRedCard){
+        CircleCrop()
+    }else{
+        null
+    }
+    if (isRedCard){
+        Glide.with(this.context)
+            .load(url)
+            .diskCacheStrategy(DiskCacheStrategy.ALL) // It will cache your image after loaded for first time
+//        .apply(RequestOptions.centerCropTransform())
+//            .transform(CircleCrop())
+            .into(this)
+    }else{
+        Glide.with(this.context)
+            .load(url)
+            .diskCacheStrategy(DiskCacheStrategy.ALL) // It will cache your image after loaded for first time
+//        .apply(RequestOptions.centerCropTransform())
+            .transform(CircleCrop())
+            .into(this)
+    }
+
 }
 
 

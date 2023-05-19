@@ -110,8 +110,8 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                                 binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.yellow_card))
                             }
                             MatchActionType.RED_CARD().actionType -> {
-                                binding.playerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                binding.playerBehaviourImg.loadImage(RED_CARD_IMG)
+                                binding.playerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.unsportsmanlike_conduct)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
+                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.red_card))
                             }
 
                             MatchActionType.SUBSTITUTION().actionType ->{
@@ -156,7 +156,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                             }
                             MatchActionType.RED_CARD().actionType -> {
                                 binding.secondPlayerBehaviour.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                binding.secondPlayerBehaviourImg.loadImage(RED_CARD_IMG)
+                                binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.red_card))
                             }
 
                             MatchActionType.SUBSTITUTION().actionType ->{
@@ -201,7 +201,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                             }
                             MatchActionType.RED_CARD().actionType -> {
                                 binding.playerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.END)
-                                binding.playerBehaviourImg.loadImage(RED_CARD_IMG)
+                                binding.playerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.red_card))
                             }
 
                            MatchActionType.SUBSTITUTION().actionType ->{
@@ -240,7 +240,7 @@ class MatchDetailRecyclerAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>(
                             }
                             MatchActionType.RED_CARD().actionType -> {
                                 binding.secondPlayerBehaviourTitle.setTextInfo(action.actionTime + "' ${itemView.context.getString(R.string.tripping)}", size = 10f, color = itemView.context.getColor(R.color._B0B0B0), maxLines = 1, ellipsize = TextUtils.TruncateAt.START)
-                                binding.secondPlayerBehaviourImg.loadImage(RED_CARD_IMG)
+                                binding.secondPlayerBehaviourImg.setImageDrawable(binding.root.context.getDrawable(R.drawable.red_card))
                             }
 
                             MatchActionType.SUBSTITUTION().actionType ->{
